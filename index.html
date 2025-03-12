@@ -45,7 +45,7 @@
 
     
     document.getElementById("instagramShare").addEventListener("click", function() {
-        const imageUrl = "https://via.placeholder.com/600x400"; // 공유할 이미지 URL
+        const imageUrl = document.getElementById('image').src; // 공유할 이미지 URL
         const instagramDeepLink = `https://www.instagram.com/stories/create/?backgroundImageUrl=${encodeURIComponent(imageUrl)}`;
 
         window.location.href = instagramDeepLink;
