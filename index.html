@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Display Image</title>
+  <title>디지텍네컷</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
-<body>
-  <h1>이미지 표시</h1>
-  <div id="image-container">
-    <img id="image" src="" alt="Image" style="max-width: 100%; height: auto;">
-  </div>
 
+<body>
+  <div class="container">
+    <h1>디지텍네컷 다운로드</h1>
+    <div id="image-container">
+      <img id="image" src="" alt="Image" style="max-width: 100%; width: 200px; height: 400px;">
+    </div>
+    <button id="download" download="디지텍네컷.png">다운로드</button>
+    <p id="instagramShare" class="btn">Instagram 공유하기</p>
+  </div>
   <script>
     // URL에서 쿼리 파라미터를 가져오는 함수
     function getQueryParameter(name) {
@@ -25,6 +31,26 @@
     } else {
       document.getElementById('image').alt = "이미지 없음";
     }
+
+
+    document.getElementById("download").addEventListener("click", function () {
+      const imageUrl = document.getElementById("image").src;
+      const link = document.createElement("a");
+      link.href = imageUrl;
+      link.download = "디지텍네컷.png"; // 다운로드될 파일 이름 설정
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    
+    document.getElementById("instagramShare").addEventListener("click", function() {
+        const imageUrl = "https://via.placeholder.com/600x400"; // 공유할 이미지 URL
+        const instagramDeepLink = `https://www.instagram.com/stories/create/?backgroundImageUrl=${encodeURIComponent(imageUrl)}`;
+
+        window.location.href = instagramDeepLink;
+    });
   </script>
 </body>
+
 </html>
