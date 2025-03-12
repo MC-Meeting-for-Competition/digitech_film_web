@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Image</title>
+</head>
+<body>
+  <h1>이미지 표시</h1>
+  <div id="image-container">
+    <img id="image" src="" alt="Image" style="max-width: 100%; height: auto;">
+  </div>
+
+  <script>
+    // URL에서 쿼리 파라미터를 가져오는 함수
+    function getQueryParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // 이미지 URL을 쿼리 스트링에서 가져와서 이미지에 할당
+    const imageUrl = getQueryParameter('image_url');
+    if (imageUrl) {
+      document.getElementById('image').src = imageUrl;
+    } else {
+      document.getElementById('image').alt = "이미지 없음";
+    }
+  </script>
+</body>
+</html>
